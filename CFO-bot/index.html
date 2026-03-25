@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFO Bot — Cloud Cost Estimator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<div class="wrapper">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">$</span>
+            <span class="logo-text">CFO<em>bot</em></span>
+        </div>
+        <p class="sidebar-desc">Monthly cloud infrastructure cost projections — precise, transparent, instant.</p>
+        <div class="pricing-legend">
+            <div class="legend-title">Pricing Model</div>
+            <div class="legend-item"><span>Compute</span><span>$0.05 / hr</span></div>
+            <div class="legend-item"><span>Storage</span><span>$0.02 / GB</span></div>
+            <div class="legend-item"><span>Bandwidth</span><span>$0.08 / GB</span></div>
+            <div class="legend-item"><span>DB Basic</span><span>$15 flat</span></div>
+            <div class="legend-item"><span>DB Standard</span><span>$40 flat</span></div>
+            <div class="legend-item"><span>DB Premium</span><span>$100 flat</span></div>
+            <div class="legend-item"><span>AI Request</span><span>$0.002 / req</span></div>
+        </div>
+        <div class="sidebar-footer">Deterministic Pricing Engine v1.0</div>
+    </aside>
+
+    <main class="main">
+
+        <div class="chat-window">
+            <div class="chat-header">
+                <div class="status-dot"></div>
+                <span>CFO Bot is online</span>
+            </div>
+
+            <div class="messages" id="messages">
+                <div class="msg bot enter">
+                    <div class="msg-avatar">$</div>
+                    <div class="msg-bubble">
+                        Hello. I'm your cloud finance assistant.<br>
+                        Fill in your usage parameters and I'll generate a precise monthly cost projection.
+                    </div>
+                </div>
+            </div>
+
+            <div id="result-area"></div>
+        </div>
+
+        <div class="form-panel">
+            <form id="calc-form" novalidate autocomplete="off">
+
+                <div class="form-row">
+                    <div class="field">
+                        <label for="compute">Compute Hours / mo</label>
+                        <input type="number" id="compute" placeholder="e.g. 100" min="0" step="1" required>
+                    </div>
+                    <div class="field">
+                        <label for="storage">Storage (GB)</label>
+                        <input type="number" id="storage" placeholder="e.g. 200" min="0" step="1" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="field">
+                        <label for="bandwidth">Bandwidth (GB)</label>
+                        <input type="number" id="bandwidth" placeholder="e.g. 50" min="0" step="1" required>
+                    </div>
+                    <div class="field">
+                        <label for="ai">AI Requests</label>
+                        <input type="number" id="ai" placeholder="e.g. 1000" min="0" step="1" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="field field--select">
+                        <label for="database">Database Tier</label>
+                        <select id="database" required>
+                            <option value="Basic">Basic — $15/mo</option>
+                            <option value="Standard" selected>Standard — $40/mo</option>
+                            <option value="Premium">Premium — $100/mo</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="contingency">Contingency (%)</label>
+                        <input type="number" id="contingency" placeholder="e.g. 10" min="0" max="100" step="1">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-calc">
+                        <span class="btn-icon">→</span>
+                        Run Estimate
+                    </button>
+                    <button type="reset" class="btn-reset">Clear</button>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
